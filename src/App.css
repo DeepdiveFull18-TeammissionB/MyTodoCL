@@ -1,0 +1,205 @@
+/* src/App.css */
+
+/* [네이버 스타일 초록색 테마] */
+:root {
+  --primary-green: #03C75A; /* 네이버 그린 */
+  --bg-color: #f5f6f7;
+  --text-dark: #333;
+  --border-color: #e4e7ef;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 0;
+  color: var(--text-dark);
+  display: flex;
+  justify-content: center; /* 리액트 루트 정렬 보정 */
+  min-height: 100vh;
+}
+
+/* 리액트 최상위 컨테이너 */
+#root {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 헤더 */
+header {
+  width: 100%;
+  background: white;
+  padding: 15px 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--primary-green);
+  font-weight: 700;
+}
+
+/* 메인 컨테이너 */
+.container {
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  gap: 20px;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .container {
+      flex-direction: column;
+  }
+}
+
+/* 카드 박스 */
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 20px;
+  flex: 1;
+}
+
+/* 캘린더 스타일 */
+.calendar-header {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  text-align: center;
+}
+
+.day-name {
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.day {
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.day:hover {
+  background-color: #f0f0f0;
+}
+
+.day.selected {
+  background-color: var(--primary-green);
+  color: white;
+  font-weight: bold;
+}
+
+.day.empty {
+  cursor: default;
+}
+.day.empty:hover { background: none; }
+
+/* 투두 리스트 스타일 */
+.todo-header {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: var(--text-dark);
+  border-bottom: 2px solid var(--primary-green);
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  outline: none;
+}
+
+input[type="text"]:focus {
+  border-color: var(--primary-green);
+}
+
+button.add-btn {
+  background: var(--primary-green);
+  color: white;
+  border: none;
+  padding: 0 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.todo-item input[type="checkbox"] {
+  accent-color: var(--primary-green);
+  width: 18px;
+  height: 18px;
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 1rem;
+}
+
+.todo-text.completed {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.delete-btn:hover { color: #ff5858; }
