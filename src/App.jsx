@@ -16,7 +16,7 @@ function App() {
     const fetchTodos = async () => {
       try {
         // 데이터 요청 시도
-        const res = await axios.get(`http://localhost:3000/api/todos?date=${selectedDate}`);
+        const res = await axios.get(`http://https://mytodosvr.onrender.com//api/todos?date=${selectedDate}`);
         
         // 에러 없이 여기까지 왔다면 성공!
         setTodos(res.data.todo); 
@@ -35,7 +35,7 @@ function App() {
     if (!inputText.trim()) return;
 
     try {
-      const res = await axios.post('http://localhost:3000/api/todos', {
+      const res = await axios.post('http://https://mytodosvr.onrender.com//api/todos', {
         text: inputText,
         date: selectedDate,
         done: false
@@ -59,7 +59,7 @@ function App() {
 
   const handleDelete = async (id) => {
     try {
-        await axios.delete(`http://localhost:3000/api/todos/${id}`);
+        await axios.delete(`http://https://mytodosvr.onrender.com//api/todos/${id}`);
         setTodos(todos.filter(todo => todo._id !== id));
         setDbStatus(true);
     } catch (err) {
@@ -70,7 +70,7 @@ function App() {
 
   const handleToggle = async (id) => {
     try {
-      const res = await axios.patch(`http://localhost:3000/api/todos/${id}/toggle`);
+      const res = await axios.patch(`http://https://mytodosvr.onrender.com//api/todos/${id}/toggle`);
       if (res.data.success) {
         setTodos(todos.map(todo => 
           todo._id === id ? res.data.todo : todo
